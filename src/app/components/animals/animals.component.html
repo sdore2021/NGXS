@@ -1,0 +1,35 @@
+<div style="width: auto; text-align: center">
+  <h3 style="display: inline">name :</h3>
+  {{ animals.name }} ;
+  <h3 style="display: inline-block">category of animal :</h3>
+  {{ animals.category }}
+
+  <h2>zebras member</h2>
+  <ul *ngFor="let zebra of animals.zebras" style="list-style-type: none">
+    <li>{{ zebra }}</li>
+  </ul>
+  <h2>pandas member</h2>
+  <ul *ngFor="let panda of animals.pandas" style="list-style-type: none">
+    <li>{{ panda }}</li>
+  </ul>
+</div>
+<div>
+  <div style="float: left; width: 25%; text-align: center">
+    <h2>Toutes les actions</h2>
+    <button type="button" (click)="initializeState()">initializeState</button>
+    <button type="button" (click)="changeName(name.value)">Change Name</button>
+    <button type="button" (click)="addZebra(zebra.value)">addZebra</button>
+    <button type="button" (click)="removePanda(panda.value)">
+      removePanda
+    </button>
+    <button type="button" (click)="changePandaName(panda.value, zebra.value)">
+      changePandaName
+    </button>
+  </div>
+  <div style="float: left; width: 75%; text-align: center">
+    <h2>changement d'etat</h2>
+    name : <input type="text" name="name" #name size="10" /><br />
+    zebra : <input type="text" name="zebra" #zebra size="10" /><br />
+    panda : <input type="text" name="panda" #panda size="10" /><br />
+  </div>
+</div>
