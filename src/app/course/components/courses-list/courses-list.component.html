@@ -1,0 +1,70 @@
+<div>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses$ | async">
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <button
+            (click)="showUpdateForm(course)"
+            class="btn btn-primary"
+            style="margin: 5px"
+          >
+            Update
+          </button>
+          <button
+            (click)="deleteCourse(course.id)"
+            class="btn btn-danger"
+            style="margin: 5px"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px">
+    <h4>Update Course</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Course Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+          #name
+          style="width: 400px"
+        />
+      </div>
+      <div class="form-group">
+        <label for="side">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          class="form-control"
+          required
+          #description
+          style="width: 400px"
+        />
+      </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        (click)="updateCourse(name.value, description.value)"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
